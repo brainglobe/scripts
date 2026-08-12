@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>BrainGlobe social card — template</title>
+<style>
+  :root { --bg:#0b0d10; --fg:#f3f1ec; --muted:#8a8f96; --rule:#22262b; --accent:#e3a96b; }
+  html,body{margin:0;padding:0;background:#1a1c1f;color:var(--fg);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh}
+  a{color:var(--accent)}a:hover{color:#f0c48f}
+  .card{width:1200px;height:630px;background:var(--bg);display:grid;grid-template-rows:1fr auto;padding:64px 80px;box-sizing:border-box;overflow:hidden}
+  /* multi-image row — set --cols to the number of images */
+  .row{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:28px;align-items:stretch}
+  .tile{display:flex;flex-direction:column;gap:14px}
+  .frame{flex:1;background:#000;border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .frame img{width:100%;height:100%;object-fit:cover;display:block}
+  /* single image — set aspect-ratio to the image's own w/h so there are no black bands */
+  .frame.solo{flex:none;justify-self:center;aspect-ratio:1/1;height:100%}
+  .frame.solo img{width:auto;object-fit:contain}
+  .caption{font-size:15px;line-height:1.25;letter-spacing:.01em}
+  .label{color:var(--fg);font-weight:500}
+  .footer{display:flex;align-items:end;justify-content:space-between;padding-top:32px;margin-top:28px;border-top:1px solid var(--rule);gap:24px}
+  h1{font-size:30px;line-height:1.15;font-weight:600;letter-spacing:-.015em;margin:0;max-width:760px;text-wrap:balance;color:#fff}
+  .accent{color:var(--accent)}
+  .logo{width:64px;height:64px;flex-shrink:0;align-self:end;margin-bottom:4px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="row" style="--cols:3">
+      <div class="tile">
+        <div class="frame"><img src="PLACEHOLDER-1.png" alt="" /></div>
+        <div class="caption"><span class="label">First atlas name</span></div>
+      </div>
+      <div class="tile">
+        <div class="frame"><img src="PLACEHOLDER-2.png" alt="" /></div>
+        <div class="caption"><span class="label">Second atlas name</span></div>
+      </div>
+      <div class="tile">
+        <div class="frame"><img src="PLACEHOLDER-3.png" alt="" /></div>
+        <div class="caption"><span class="label">Third atlas name</span></div>
+      </div>
+    </div>
+    <div class="footer">
+      <h1>Something short, now in <span class="accent">BrainGlobe</span>.</h1>
+      <img class="logo" src="brainglobe-logo.png" alt="BrainGlobe" />
+    </div>
+  </div>
+</body>
+</html>
