@@ -24,9 +24,13 @@ atlas = BrainGlobeAtlas(
 
 viewer = napari.Viewer(ndisplay=3)
 
-# Display reference, annotations, and the root mesh.
+# Display reference, annotations, additional references, and the root mesh.
 display = NapariAtlasRepresentation(atlas, viewer)
 display.add_to_viewer()
+
+for reference_name in atlas.additional_references:
+    display.add_additional_reference(reference_name)
+
 display.add_structure_to_viewer("root")
 
 # Add the hierarchy using the atlas already loaded from your working directory.
