@@ -1,3 +1,11 @@
+# /// script
+# dependencies = [
+#     "napari[all]",
+#     "brainglobe-atlasapi",
+#     "brainrender-napari",
+# ]
+# ///
+
 import napari
 from brainglobe_atlasapi import BrainGlobeAtlas
 from brainrender_napari.napari_atlas_representation import (
