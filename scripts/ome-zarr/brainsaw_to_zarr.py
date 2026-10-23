@@ -26,13 +26,22 @@ run outside Slurm it converts every directory in turn. E.g. with one
 directory per line in dirs.txt::
 
     #!/bin/bash
-    #SBATCH --job-name=ome-zarr
-    #SBATCH --array=0-9            # 0 .. (lines in dirs.txt - 1)
-    #SBATCH --cpus-per-task=8
-    #SBATCH --mem=64G              # see the memory note below
-    #SBATCH --time=3:00:00
-    #SBATCH --output=ome-zarr_%A_%a.log
-    python brainsaw_to_zarr.py --shard 512 $(cat dirs.txt)
+
+    #SBATCH -J ome-zarr-convert
+    #SBATCH -p cpu
+    #SBATCH -N 1
+    #SBATCH -t 0-3:0
+    #SBATCH --cpus-per-task 8
+    #SBATCH --mem 64G              # see the memory note below
+    #SBATCH -o ome-zarr_%A_%a.log
+    #SBATCH -e ome-zarr_%A_%a.err
+    #SBATCH --array 0-4            # 0 .. (lines in dirs.txt - 1)
+
+    module load uv
+
+    cd /path/to/script/location
+
+    uv run brainsaw_to_zarr.py --shard 512 $(cat dirs.txt)
 
 How it is written. The output has one array per pyramid level: s0 at
 full resolution, then s1, s2, ... each half the size of the one before
@@ -84,10 +93,11 @@ import sys
 import threading
 import time
 import warnings
+from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
 from functools import partial
 from pathlib import Path
-from typing import Callable, NamedTuple
+from typing import NamedTuple
 
 import dask.array as da
 import ngff_zarr
