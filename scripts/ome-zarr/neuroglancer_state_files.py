@@ -16,7 +16,7 @@ public read access, the collection's URL for that directory. E.g. with
 vibraint_lsfm_rat/ shared at the collection's root:
 
     cd /ceph/scratch/globus/neuroinformatics/vibraint_lsfm_rat
-    python ngl_state.py 26_300051_ULLS \\
+    python neuroglancer_state_files.py 26_300051_ULLS \\
         --url https://g-5d10b4.3cf00.03c0.data.globus.org/26_300051_ULLS
     -> https://neuroglancer-demo.appspot.com/#!https://g-5d10b4.3cf00.03c0.data.globus.org/26_300051_ULLS/<acquisition>/<name>.ngl.json
 """
