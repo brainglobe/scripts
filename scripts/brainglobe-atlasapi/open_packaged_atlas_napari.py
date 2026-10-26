@@ -16,6 +16,7 @@ from brainrender_napari.widgets.structure_view import (
     StructureView,
 )
 
+# Loads the NMT ARM Sym Macaque atlas as an example. Replace as needed.
 atlas = BrainGlobeAtlas(
     "nmt_arm_sym_macaque_250um",
     brainglobe_dir="/home/harrycarey/brainglobe_workingdir/nmt_arm_sym_macaque",
