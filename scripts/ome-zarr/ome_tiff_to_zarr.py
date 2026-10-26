@@ -20,7 +20,7 @@ run outside Slurm it converts every directory in turn. E.g. with one
 directory per line in dirs.txt::
 
     #!/bin/bash
-    
+
     #SBATCH -J ome-zarr-convert
     #SBATCH -p cpu
     #SBATCH -N 1
@@ -197,8 +197,7 @@ def _first_plane(pages):
     p0 = pages[0]
     offsets = [p.dataoffsets[0] for p in pages]
     plane = p0.shape[0] * p0.shape[1] * p0.dtype.itemsize
-    # ponytail: only contiguous uncompressed stacks; add an aszarr()-based
-    # fallback if a compressed/tiled OME-TIFF ever turns up.
+
     assert (
         all(p.is_contiguous for p in pages)
         and all(p.parent is p0.parent for p in pages)

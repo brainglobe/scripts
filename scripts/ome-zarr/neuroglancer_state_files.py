@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 
 _PER_M = {"nanometer": 1e9, "micrometer": 1e6, "millimeter": 1e3}
-_PANEL_PX = 1200  # ponytail: fits a 4panel half-screen; tune for big monitors
+_PANEL_PX = 1200  # fits a 4panel half-screen; tune for big monitors higher more zoom
 _SHADER = (  # also volume renders, so the 3D toggle works in the viewer
     "#uicontrol invlerp contrast\n"
     "#uicontrol vec3 color color\n"
