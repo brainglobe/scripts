@@ -1,8 +1,13 @@
 # Scripts Repository
 A collection of useful BrainGlobe related scripts. This repo consists of the following directories: 
 
-# Scripts
+## Scripts
 Scripts organised by package to aid in the use of BrainGlobe tools. 
+
+## Skills
+Various skills which may be useful for matters relating to BrainGlobe without necessarily being Python scripts. 
+
+# Usage
 
 ## Python scripts
 ### Instructions for macOS / Linux / Windows users
@@ -38,6 +43,3 @@ Scripts that take arguments print their options with:
 ```bash
 $ uv run script.py --help
 ```
-
-# Skills
-Various skills which may be useful for matters relating to BrainGlobe without necessarily being Python scripts. 
