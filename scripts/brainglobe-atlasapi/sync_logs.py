@@ -8,16 +8,12 @@
 ``uv run sync_logs.py brainglobe-logs/``
 
 Fetches every log object listed after the newest key already mirrored and
-stores its bytes untouched as ``(key, body)`` rows in zstd Parquet files,
-the folder ``python -m oss_dashboard.atlas_logs --local-dir <dir>`` reads.
+stores its bytes untouched as ``(key, body)`` rows in zstd Parquet files.
 One file per day (``2026-11-03.parquet``; log keys start with their date),
 rows in key order, so the folder sorts in key order too. New rows for a day
 that already has a file are appended by rewriting it to a temp file and
 swapping it in, every ``--batch`` rows, so an interrupted run loses at most
 one batch and resumes after the last key written.
-
-Used to keep a local mirror for the oss-dashboard atlas-usage page, so a
-``--full-rebuild`` there doesn't need to refetch every log from S3.
 """
 
 from __future__ import annotations
@@ -60,9 +56,9 @@ def _append(path: Path, rows: list[Row]) -> None:
         table,
         tmp,
         compression="zstd",
-        row_group_size=10_000,  # bounds the reader's memory per batch
+        row_group_size=10_000,
     )
-    os.replace(tmp, path)  # only complete files ever match *.parquet
+    os.replace(tmp, path)
 
 
 def write(out: Path, rows: Iterable[Row], batch: int = 10_000) -> int:
